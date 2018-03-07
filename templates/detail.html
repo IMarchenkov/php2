@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>{{item.NAME}}</h1>
+    <div class="fetured_item">
+        <img src="/{{item.IMAGES.0.PATH}}" alt="{{item.NAME}}">
+        <a class="fetured_item_text" href="/catalog/view/{{item.CODE}}">
+            <p>{{item.NAME}}</p>
+            <span class="stars">
+                    {%set arRating = item.RATING|split('.')%}
+                    {%set n = 0%}
+                    {% if arRating.0 > 0  %}
+                        {%for i in 0..arRating.0 %}
+                            {%set n=n+1%}
+                            <i class="fa fa-star"></i>
+                        {%endfor%}
+                    {%endif%}
+                    {%if arRating.1 > 0 %}
+                        {%set n=n+1%}
+                        <i class="fa fa-star-half-o"></i>
+                    {%endif%}
+                    {% if n < 5%}
+                        {% for i in n..5 %}
+                            <i class="fa fa-star-o"></i>
+                        {%endfor%}
+                    {%endif%}
+            </span>
+            <span>&#36;{{item.PRICE}}</span>
+        </a>
+        <a class="fetured_item_hover buy" href="/catalog/view/{{item.CODE}}"
+           data-id="{{item.id}}">
+            <div class="flex"><img src="/img/forma-1-copy.png" alt=""><span> Add to Cart </span></div>
+        </a>
+    </div>
+</div>

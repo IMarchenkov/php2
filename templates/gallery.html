@@ -1,0 +1,51 @@
+<style>
+    .gallery {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+
+    .gallery img {
+        width: 300px;
+        margin: 10px;
+    }
+
+    .gallery img:hover {
+        outline: 5px solid coral;
+    }
+
+    form#image label,
+    form#image input,
+    form#image button {
+        display: block;
+        margin: 10px;
+    }
+
+    form#image button {
+        background: none;
+        padding: 0 20px;
+        border: none;
+        outline: 3px solid cyan;
+        cursor: pointer;
+    }
+
+    form#image button:hover {
+        outline: 3px solid coral;
+    }
+</style>
+<div class="container">
+    <h2>{{tittle}}</h2>
+    <div class="gallery">
+        {%for image in items%}
+        <a target="_blank" href="{{detail_link}}/view/{{image.NAME}}">
+
+            <img src="/{{image.PATH}}" alt="{{image.NAME}}">
+        </a>
+        {%endfor%}
+    </div>
+    <form id="image" action="/ajax/addimage.php" enctype="multipart/form-data" method="post">
+        <label for="add_image">Добавить изображение</label>
+        <input id="add_image" type="file" name="new_image">
+        <button type="submit">Загрузить</button>
+    </form>
+</div>
