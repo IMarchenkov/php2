@@ -1,0 +1,56 @@
+<style>
+    .item_line img {
+        max-height: 100px;
+    }
+
+    #warning {
+        color: red;
+    }
+</style>
+<div class="container">
+    <form id="big_basket" action="#">
+        <div class="item_line">
+            <div>Product Details</div>
+            <div>unite Price</div>
+            <div>Quantity</div>
+            <div>shipping</div>
+            <div>Subtotal</div>
+            <div>ACTION</div>
+        </div>
+        <div id="basket_items">
+
+        </div>
+        <div class="form_control">
+            <button class="button" type="reset">cLEAR SHOPPING CART</button>
+            <button class="button" type="submit">cONTINUE sHOPPING</button>
+        </div>
+    </form>
+    <div id="warning"></div>
+    <form class="shopping_cart" action="#">
+        <fieldset>
+            <h4>Shipping Address</h4>
+            <label class="select" for="country_list">
+                <select id="country_list">
+                    <option label="Bangladesh" value="Bangladesh">
+                    <option label="England" value="England">
+                    <option label="China" value="China">
+                    <option label="Russia" value="Russia">
+                </select>
+            </label>
+            <input type="text" placeholder="State">
+            <input type="text" placeholder="Postcode / Zip">
+        </fieldset>
+        <fieldset>
+            <h4>coupon discount</h4>
+            <label for="coupon">Enter your coupon code if you have one</label>
+            <input type="text" placeholder="State" id="coupon">
+            <button class="button">Apply coupon</button>
+        </fieldset>
+        <fieldset>
+            <!--        <p id="total">Sub total <span>&#36;900</span></p>-->
+            <h4 id="total"></h4>
+            <button id="order" type="submit" class="button button-pink">Сделать заказ</button>
+        </fieldset>
+    </form>
+    <button class="button button-small">get a quote</button>
+</div>

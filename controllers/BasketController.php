@@ -36,7 +36,7 @@ class BasketController extends Controller
         echo json_encode($res);
     }
 
-    public function actionChange($path = [], $quantity){
+    public function actionChange($path = []){
         $basketModel = new Basket();
         $item_id = $_POST['item_id'];
         $quantity = $_POST['quantity'];
