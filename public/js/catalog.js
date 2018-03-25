@@ -1,6 +1,51 @@
 var $catalog = $('#goods');
 getCount();
 
+if ($('#add_item').length > 0){
+    $('#add_item').on('submit', function (e) {
+        var item = $(this).serializeArray();
+        console.log(item);
+        $.post({
+            url: '/ajax/catalog.php',
+            data: {
+                action: "add",
+                item: item
+            },
+            dataType: 'json',
+            context: this,
+            success: function (data) {
+                console.log(data);
+                if (data > 0){
+                    $('#goods').empty();
+                    getMore(0, 4);
+                }
+            }
+        });
+        e.preventDefault();
+    })
+
+    $('#goods').on('click', '.delete_item', function (e) {
+        $.post({
+            url: '/ajax/catalog.php',
+            data: {
+                action: "delete",
+                id: this.id
+            },
+            dataType: 'json',
+            context: this,
+            success: function (data) {
+                console.log(data);
+                if (data > 0){
+                    $(this).parent().remove();
+                    getCount();
+                }
+            }
+        });
+        $(this).parent().remove();
+        getCount();
+        e.preventDefault();
+    })
+}
 
 function addBtn() {
     $catalog.append('<button id="more">Еще</button>');
@@ -29,12 +74,20 @@ function getCount() {
     return count;
 }
 
-function getMore() {
+function getMore(start, count) {
+    if(start === undefined){
+        start = $('#goods').children().length-1;
+    }
+    if(count === undefined){
+        count = 4;
+    }
     var items;
     $.post({
         url: '/ajax/catalog.php',
         data: {
-            action: "get"
+            action: "get",
+            start: start,
+            count: count
         },
         dataType: 'json',
         context: this,
@@ -71,7 +124,12 @@ function getMore() {
                 newItems += '</span><span>&#36;' + item['PRICE'] + '</span></a>' +
                     '<a class="fetured_item_hover buy" href="/catalog/view/' + item['CODE'] + '" data-id="' + item['id'] + '">' +
                     '<div class="flex"><img src="img/forma-1-copy.png" alt="copy">' +
-                    '<span> Add to Cart </span></div></a></div>'
+                    '<span> Add to Cart </span></div></a>'
+
+                if ($('#catalog_admin').length > 0) {
+                    newItems += '<button id="' + item['id'] + '" class="delete_item">Удалить</button>';
+                }
+                newItems += '</div>';
             }
             $catalog.append(newItems);
             getCount();

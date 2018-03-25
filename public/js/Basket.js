@@ -166,7 +166,7 @@ Basket.prototype.refresh = function () {
         }
 
         $basketData.append('<p class="total">TOTAL <span>&#36;' + this.amount + '</span></p>');
-        $basketData.append('<button>Checkout</button>');
+        $basketData.append('<a class="btn" href="/account/checkout">Оформить</a>');
         $basketData.append('<button>Go to cart</button>');
     } else {
         $basketData.append('<p class="total">EMPTY</p>');

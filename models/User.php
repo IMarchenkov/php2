@@ -9,6 +9,7 @@
 namespace models;
 
 use components\Model;
+
 //use core\DB;
 
 class User extends Model
@@ -27,7 +28,19 @@ class User extends Model
         return $users;
     }
 
+    public function addUser($name, $password, $role = 'user')
+    {
+        if (empty($this->getUsers([],['login' => $name]))) {
+            $arParams = ['login' => $name, 'pass' => password_hash($password, PASSWORD_DEFAULT), 'role' => $role];
+            $this->add($arParams);
+        } else {
+//            echo 'Имя уже занято!';
+        }
+    }
 
+    public function getUserById($id){
+        return $this->get(['id_user', 'login', 'role'],['id_user'=>$id])[0];
+    }
 
 //    public function getVisitedPages($arSelect = array(), $arFilter = array(), $arSort = array(), $arLimit = array())
 //    {

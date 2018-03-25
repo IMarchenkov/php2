@@ -86,7 +86,7 @@ abstract class Model
             throw new \Exception('Не заданы параметры запроса');
         }
         $this->query = $query;
-        $result = $this->execute($this->queryData);
+        $result = $this->exec($this->queryData);
         return $result;
     }
 

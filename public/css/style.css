@@ -343,6 +343,7 @@ p.total span {
     float: right;
 }
 
+div.under_basket a.btn,
 div.under_basket button {
     width: 228px;
     height: 53px;
@@ -357,7 +358,11 @@ div.under_basket button {
     outline: none;
     cursor: pointer;
 }
-
+div.under_basket a.btn{
+    line-height: 50px;
+    text-align: center;
+}
+div.under_basket a.btn:hover,
 div.under_basket button:hover {
     border: 1px solid #f16d7f;
     color: #f16d7f;

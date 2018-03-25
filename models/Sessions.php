@@ -37,6 +37,8 @@ class Sessions extends Model
         unset($_SESSION['pass']);
         setcookie('idUserCookie', '', time() - 3600 * 24 * 7);
         setcookie("basket_id", '', time() - 3600 * 24 * 7);
+
+        unset($_SESSION['BASKET']);
     }
 
     public function getUsersSession($hash_cookie)

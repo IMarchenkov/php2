@@ -24,7 +24,7 @@ class Account extends Model
     {
         $data = array();
         $data = $this->get(array('id', 'NAME'), array('id'=>'10.<'), array('id'=>'DESC'), array(5));
-        var_dump($data);
+//        var_dump($data);
         return $data;
     }
 }

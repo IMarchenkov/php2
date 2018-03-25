@@ -51,6 +51,26 @@ class Item extends Model
         return $this;
     }
 
+    public function deleteById($id){
+        $result = $this->del(['id'=>$id]);
+        return $result;
+    }
+
+    public function addItem($item){
+//        $this->name = $item['NAME'];
+//        $this->code = $item['CODE'];
+        $item['SORT'] = $this->sort;
+        $item['CATEGORY'] = $this->category;
+//        $this->image = new Image($item['IMAGES']);
+//        $this->price = $item['PRICE'];
+//        $this->rating = $item['RATING'];
+//        $this->date_create = $item['DATE_CREATE'];
+        $item['ACTIVE'] = $this->active;
+
+        $id = $this->add($item);
+        return $id;
+    }
+
     /**
      * @return null
      */

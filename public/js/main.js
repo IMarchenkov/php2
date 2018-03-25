@@ -19,8 +19,10 @@ $(document).ready(function () {
     var big_basket = new BigBasket('basket');
     big_basket.render($('#big_basket'));
 
-    $('.buy').on('click', function (e) {
+    $('#goods').on('click', '.buy', function (e) {
+        console.log(this);
         var id = parseInt($(this).attr('data-id'));
+        console.log(id);
         basket.add(id);
         e.preventDefault();
     });
@@ -52,25 +54,40 @@ $(document).ready(function () {
         }
     });
 
-    $('#order').on('click', function () {
+    $('#order').on('click', function (e) {
+        console.log(this);
         $.post({
-            url: '/ajax/basket.php',
+            beforeSend: function(){$(this).attr('disabled', true)},
+            url: '/orders/add',
             data: {
-                action: "order"
+                delivery_id: '1',
+                payment_id: '1'
             },
             dataType: 'json',
             context: this,
             success: function (data) {
                 console.log(data);
-                if (data.result == 1) {
-                    big_basket.refresh();
-                    basket.refresh();
-                    $('#warning').text('');
-                } else {
-                    $('#warning').text(data.errorMessage);
+                if (data.result == 0){
+                    $('#warning').html(data.errorMessage);
+                }else if(data.result == 1){
+                    console.log(location.href);
+                    var newLocation = location.href.split('/', 3).join('/')+'/account';
+                    console.log(newLocation);
+                    window.location.replace(newLocation);
                 }
             }
         });
+        e.preventDefault();
+        //         console.log(data);
+        //         if (data.result == 1) {
+        //             big_basket.refresh();
+        //             basket.refresh();
+        //             $('#warning').text('');
+        //         } else {
+        //             $('#warning').text(data.errorMessage);
+        //         }
+        //     }
+        // });
     });
 
 

@@ -84,7 +84,7 @@
                         </fieldset>
                         <fieldset>
                             <input type="submit" name="SubmitLogin" value="Sign in"/>
-                            <a href="/register/">Sign up</a>
+                            <a href="/account/newuser/">Sign up</a>
                         </fieldset>
 
                     </form>
@@ -93,7 +93,7 @@
                         <p>Вы авторизованы под логином <b><?= $_SESSION['login'] ?></b></p>
                         <input type="submit" name="ExitLogin" value="Выйти"/>
                     </form>
-                    <a href="#">Личный кабинет</a>
+                    <a href="/account/">Личный кабинет</a>
                 <? endif; ?>
             </div>
         </div>

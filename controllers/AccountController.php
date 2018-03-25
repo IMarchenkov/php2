@@ -7,49 +7,83 @@
  */
 
 namespace controllers;
+
 use components\Auth;
 use components\Controller;
 
 use models\Account;
+use models\Order;
+use models\Status;
+use models\User;
 
 
 class AccountController extends Controller
 {
-    public function actionIndex() {
+    public function actionIndex()
+    {
 
-        if(Auth::check()) {
-            var_dump("Приветствую, хозяин!");
-        }
-
-        $accountModel = new Account();
-
-        $data = $accountModel->getAccount();
-
-        $this->render ('account.html', $data);
-
-    }
-
-    public function actionLogin( Request $request ) {
-
-        if(!empty($request->postParams)){
-            $modelUser = new User();
-
-            $user = $modelUser->getUserByLogin($request->postParams['login']);
-
-            if(!empty($user) && $user['password'] == md5($request->postParams['password'])) {
-                $_SESSION['user'] = $user;
-                echo json_encode(['success' => true]);
+        if (Auth::check()) {
+            $orderModel = new Order();
+            if (Auth::isAdmin()) {
+                $data['orders'] = $orderModel->getAllOrders();
             } else {
-                echo json_encode(['success' => false]);
+                $data['orders'] = $orderModel->getOrderByUser();
             }
 
+            $data['admin'] = Auth::isAdmin();
+
+            $statusModel = new Status();
+            $data['status'] = $statusModel->getAllStatuses();
+        } else {
+            $data['error'] = 'Вы не авторизованы';
         }
 
+
+
+        $this->render('account.html', $data);
     }
 
-    public function actionLogout( ) {
+    public function actionCheckout()
+    {
+        $data = [];
+
+        $this->render('checkout.html', $data);
+    }
+
+//    public function actionLogin( Request $request ) {
+//
+//        if(!empty($request->postParams)){
+//            $modelUser = new User();
+//
+//            $user = $modelUser->getUserByLogin($request->postParams['login']);
+//
+//            if(!empty($user) && $user['password'] == md5($request->postParams['password'])) {
+//                $_SESSION['user'] = $user;
+//                echo json_encode(['success' => true]);
+//            } else {
+//                echo json_encode(['success' => false]);
+//            }
+//
+//        }
+//
+//    }
+
+    public function actionLogout()
+    {
         unset($_SESSION['user']);
         $this->redirect('/');
 
+    }
+
+    public function actionRegister()
+    {
+        $modelUser = new User();
+        $modelUser->addUser($_REQUEST['name'], $_REQUEST['password']);
+        header("Location: http://" . $_SERVER['HTTP_HOST'] . "/");
+    }
+
+    public function actionNewuser()
+    {
+        $this->render('register.html', []);
     }
 }

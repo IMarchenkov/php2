@@ -1,1 +1,89 @@
-<h1>Аккаунт</h1>
+<style>
+    #orders {
+    }
+
+    #orders .order {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        text-align: center;
+        padding: 20px 0;
+        margin: 0;
+        border-bottom: 1px solid lightslategrey;
+    }
+
+    #orders .order.order_header {
+        font-weight: 600;
+        font-size: 18px;
+        border-bottom: 2px solid fuchsia;
+    }
+
+    #orders .order .order_id {
+        width: 10%;
+    }
+
+    #orders .order .user {
+        width: 10%;
+    }
+
+    #orders .order .date {
+        width: 15%;
+    }
+
+    #orders .order .delivery_id {
+        width: 15%;
+    }
+
+    #orders .order .payment_id {
+        width: 15%;
+    }
+
+    #orders .order .status {
+        width: 15%;
+    }
+
+    #orders .order .total_price {
+        width: 20%;
+    }
+</style>
+<div class="container">
+    <h1>Аккаунт</h1>
+    <h2>Заказы</h2>
+    <div id="orders">
+        <div class="order order_header">
+            <div class="order_id">Номер заказа</div>
+            <div class="user">Пользователь</div>
+            <div class="date">Дата заказа</div>
+            <div class="delivery_id">Способ доставки</div>
+            <div class="payment_id">Способ оплаты</div>
+            <div class="status">Статус заказа</div>
+            <div class="total_price">Итого к оплате</div>
+        </div>
+        {% for order in orders %}
+        <div class="order">
+            <div class="order_id">{{order.id}}</div>
+            <div class="user">{{order.user.login}}</div>
+            <div class="date">{{order.DATE|date("d.m.Y")}}</div>
+            <div class="delivery_id">Самовывоз</div>
+            <div class="payment_id">Наличные</div>
+            <div class="status">
+            {% if admin == true %}
+                <select name="status" id="status_{{order.id}}">
+                    {% for key, value in status %}
+                    <option {% if key ==  order.status_id %}
+                            selected {% endif %}
+                            value="{{ key }}">{{ value.name }}</option>
+                    {% endfor %}
+                </select>
+            {% else %}
+                    {{status[order.status_id].name}}
+            {% endif %}
+            </div>
+            <div class="total_price">{{order.sum_price}}</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% if admin == true %}
+<script defer src="/js/order.js"></script>
+{% endif %}

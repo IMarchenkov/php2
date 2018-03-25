@@ -98,7 +98,7 @@ class Auth
         $user_date = $sessionModel->getUsersSession($IdUserSession)[0];
         if (!empty($user_date)) {
             $userModel = new User();
-            $this->user = $userModel->getUsers(array(), array('id_user' => $user_date['id_user']));
+            $this->user = $userModel->getUsers(array(), array('id_user' => $user_date['id_user']))[0];
             $_SESSION['IdUserSession'] = $IdUserSession;
             $_SESSION['login'] = $user_date['login'];
             $_SESSION['id_user'] = $user_date['id_user'];
@@ -175,6 +175,15 @@ class Auth
         }
 
         return false;
+    }
+
+    public static function getUserId(){
+
+        $user = self::getInstance()->getUser();
+        if (!empty($user['id_user']))
+            return $user['id_user'];
+        else
+            return null;
     }
 
 //    public function init()

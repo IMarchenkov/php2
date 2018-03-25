@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 25 2018 г., 00:28
+-- Время создания: Мар 25 2018 г., 13:06
 -- Версия сервера: 5.6.38
 -- Версия PHP: 7.1.12
 
@@ -34,34 +34,50 @@ CREATE TABLE `BASKET` (
   `user_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `quantity` int(5) NOT NULL,
-  `DATA` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `DATE` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `BASKET`
 --
 
-INSERT INTO `BASKET` (`id`, `basket_id`, `user_id`, `item_id`, `quantity`, `DATA`) VALUES
-(1, 788568115, 0, 10, 1, '2018-02-12 00:21:47'),
-(2, 417422485, 0, 10, 1, '2018-02-12 00:21:48'),
-(3, 543188476, 0, 9, 1, '2018-02-12 00:21:49'),
-(4, 272457885, 0, 9, 1, '2018-02-12 00:21:49'),
-(5, 498831176, 0, 11, 1, '2018-02-12 00:21:57'),
-(6, 315661621, 0, 11, 1, '2018-02-12 00:21:58'),
-(7, 377597045, 0, 10, 1, '2018-02-12 00:21:59'),
-(8, 952648925, 0, 11, 1, '2018-02-12 00:22:04'),
-(9, 697299194, 0, 11, 1, '2018-02-12 00:22:26'),
-(10, 407122802, 0, 11, 1, '2018-02-12 00:22:27'),
-(11, 675820922, 0, 11, 1, '2018-02-12 00:22:29'),
-(12, 263586425, 0, 9, 1, '2018-02-12 00:22:34'),
-(13, 176986694, 0, 10, 1, '2018-02-12 00:22:38'),
-(14, 730560302, 0, 10, 1, '2018-02-12 00:22:51'),
-(15, 730560302, 0, 7, 1, '2018-02-12 00:24:13'),
-(16, 883407592, 0, 11, 2, '2018-02-12 00:27:20'),
-(17, 883407592, 0, 10, 1, '2018-02-12 00:27:21'),
-(18, 576037597, 0, 12, 2, '2018-02-12 00:28:49'),
-(19, 576037597, 0, 11, 1, '2018-02-12 00:28:50'),
-(20, 576037597, 0, 10, 1, '2018-02-12 00:31:53');
+INSERT INTO `BASKET` (`id`, `basket_id`, `user_id`, `item_id`, `quantity`, `DATE`) VALUES
+(3, 264791, 3, 7, 1, '2018-03-25 01:23:59'),
+(4, 264791, 3, 8, 1, '2018-03-25 01:24:04'),
+(5, 780459, 3, 6, 1, '2018-03-25 01:49:38'),
+(6, 483004, 3, 6, 4, '2018-03-25 01:56:18'),
+(7, 483004, 3, 7, 1, '2018-03-25 01:56:18'),
+(8, 471065, 3, 6, 1, '2018-03-25 02:03:51'),
+(9, 471065, 3, 7, 1, '2018-03-25 02:03:51'),
+(10, 196205, 3, 5, 1, '2018-03-25 02:07:11'),
+(11, 196205, 3, 7, 1, '2018-03-25 02:07:11'),
+(12, 646375, 3, 6, 1, '2018-03-25 02:12:10'),
+(13, 646375, 3, 7, 1, '2018-03-25 02:12:10'),
+(14, 739687, 3, 6, 2, '2018-03-25 02:15:16'),
+(15, 739687, 3, 7, 2, '2018-03-25 02:15:16'),
+(16, 341834, 3, 7, 1, '2018-03-25 02:17:01'),
+(17, 341834, 3, 6, 1, '2018-03-25 02:17:10'),
+(18, 688153, 3, 6, 1, '2018-03-25 02:18:42'),
+(19, 688153, 3, 7, 1, '2018-03-25 02:18:42'),
+(20, 834561, 3, 6, 2, '2018-03-25 02:21:27'),
+(21, 834561, 3, 7, 1, '2018-03-25 02:22:18'),
+(22, 540722, 3, 6, 2, '2018-03-25 10:53:01'),
+(23, 540722, 3, 7, 1, '2018-03-25 10:53:01'),
+(24, 673713, 3, 7, 2, '2018-03-25 11:03:23'),
+(25, 673713, 3, 5, 1, '2018-03-25 11:03:23'),
+(26, 673713, 3, 10, 1, '2018-03-25 11:03:23'),
+(27, 114899, 4, 5, 1, '2018-03-25 11:05:18'),
+(28, 114899, 4, 6, 1, '2018-03-25 11:05:18'),
+(29, 114899, 4, 7, 1, '2018-03-25 11:05:18'),
+(30, 114899, 4, 8, 1, '2018-03-25 11:05:18'),
+(31, 624432, 4, 6, 1, '2018-03-25 11:06:30'),
+(32, 624432, 4, 7, 1, '2018-03-25 11:06:30'),
+(33, 624432, 4, 8, 1, '2018-03-25 11:06:30'),
+(34, 703534, 4, 11, 2, '2018-03-25 11:08:25'),
+(35, 703534, 4, 12, 1, '2018-03-25 11:08:25'),
+(36, 997455, 4, 9, 1, '2018-03-25 11:10:32'),
+(37, 997455, 4, 11, 1, '2018-03-25 11:10:32'),
+(38, 997455, 4, 12, 1, '2018-03-25 11:10:32');
 
 -- --------------------------------------------------------
 
@@ -111,10 +127,11 @@ CREATE TABLE `CATEGORIES` (
 INSERT INTO `CATEGORIES` (`id`, `NAME`, `CODE`, `PARENT_CATEGORY`, `DESCRIPTION`, `IS_SHOW`) VALUES
 (1, 'Главная', 'main', NULL, 'Главная страница', 1),
 (3, 'Каталог', 'catalog', NULL, 'Каталог товаров', 1),
-(5, 'Контакты', 'contacts', NULL, 'Наши контакты', 1),
+(5, 'Контакты', 'contacts', NULL, 'Наши контакты', 0),
 (7, 'Галерея', 'gallery', NULL, 'Галерея фотографий', 1),
-(8, 'Заказы', 'orders', NULL, 'Все заказы', 1),
-(9, 'Изображение', 'image', NULL, 'Страница изображения', 0);
+(8, 'Заказы', 'orders', NULL, 'Все заказы', 0),
+(9, 'Изображение', 'image', NULL, 'Страница изображения', 0),
+(10, 'Товар', 'item', NULL, 'Отдельная страница товара', 0);
 
 -- --------------------------------------------------------
 
@@ -146,11 +163,12 @@ INSERT INTO `CONTENT` (`id`, `NAME`, `CODE`, `DESCRIPTION`, `OWNER_ID`, `TEMPLAT
 (1, 'Новые шмотки', 'FEATURED_ITEMS', 'Shop for items based on what we featured in this week', 1, 'featured_items', 500, NULL, 'items', '(ACTIVE, Y)', '(DATE_CREATE, DESC)', '(0,8)', ''),
 (2, 'Галерея', 'gallery', 'Галерея фотографий', 7, 'gallery', 500, NULL, 'images', '(IS_GALLERY,1)', '(VIEW,DESC)', '', 'image'),
 (3, 'Отзывы', 'callback', 'Отзывы посетителей', 5, 'callback', 500, NULL, 'callback', '', '(DATA,DESC)', '', ''),
-(4, 'Каталог', 'full_catalog', 'Все предметы каталога', 3, 'full_catalog', 500, NULL, 'items', '(ACTIVE, Y)', '', '', ''),
+(4, 'Каталог', 'catalog', 'Все предметы каталога', 3, 'full_catalog', 500, NULL, 'items', '(ACTIVE, Y)', '', '(0,4)', 'item'),
 (5, 'Заказы', 'orders', 'Ваши заказы', 8, 'orders', 500, NULL, 'ORDERS', '', '', '', ''),
 (6, 'Доставка', 'delivery', 'Варианты доставки', 8, 'delivery', 500, NULL, 'DELIVERY', '', '', '', ''),
 (7, 'Оплата', 'payment', 'Варианты оплаты', 8, 'payment', 500, NULL, 'PAYMENT', '', '', '', ''),
-(8, 'Крупное изображение', 'image', 'Отдельное изображение', 9, 'image', 500, NULL, 'IMAGES', 'detail', '', '', '');
+(8, 'Крупное изображение', 'image', 'Отдельное изображение', 9, 'image', 500, NULL, 'IMAGES', 'detail', '', '', ''),
+(9, 'Отдельный товар', 'item', 'Отдельный товар', 10, 'detail', 500, NULL, 'ITEMS', 'detail', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -195,11 +213,11 @@ CREATE TABLE `IMAGES` (
 --
 
 INSERT INTO `IMAGES` (`id`, `NAME`, `PATH`, `SIZE`, `VIEW`, `RATING`, `IS_GALLERY`, `DATE_CREATE`, `user`) VALUES
-(25, 'spark', 'images/spark_1517164164.png', 319391, 2, 0, 1, '2018-02-24 23:18:41', 'admin'),
-(26, 'mavic', 'images/mavic_1517164183.jpg', 38880, 2, 0, 1, '2018-02-24 23:11:17', 'admin'),
-(27, 'phantom', 'images/phantom_1517164190.jpg', 36415, 7, 0, 1, '2018-02-24 23:18:36', 'admin'),
-(28, 'Inspire', 'images/Inspire_1517164200.png', 411416, 7, 0, 1, '2018-02-24 23:36:54', 'admin'),
-(29, 'goggles', 'images/goggles_1517164212.png', 395694, 3, 0, 1, '2018-02-25 00:20:55', 'admin'),
+(25, 'spark', 'images/spark_1517164164.png', 319391, 5, 0, 1, '2018-03-01 00:14:26', 'admin'),
+(26, 'mavic', 'images/mavic_1517164183.jpg', 38880, 3, 0, 1, '2018-03-01 00:01:14', 'admin'),
+(27, 'phantom', 'images/phantom_1517164190.jpg', 36415, 9, 0, 1, '2018-02-26 23:06:38', 'admin'),
+(28, 'Inspire', 'images/Inspire_1517164200.png', 411416, 14, 0, 1, '2018-02-25 14:12:54', 'admin'),
+(29, 'goggles', 'images/goggles_1517164212.png', 395694, 6, 0, 1, '2018-03-01 00:04:58', 'admin'),
 (30, 'osmo', 'images/osmo_1517164218.jpg', 46381, 1, 0, 1, '2018-01-28 21:30:27', 'admin'),
 (31, 'ronin', 'images/ronin_1517164224.png', 302366, 0, 0, 1, '0000-00-00 00:00:00', 'admin'),
 (32, 'layer-2', 'images/layer-2_1517864409.png', 113632, 0, 0, 0, '2018-02-06 00:02:37', 'admin'),
@@ -210,7 +228,10 @@ INSERT INTO `IMAGES` (`id`, `NAME`, `PATH`, `SIZE`, `VIEW`, `RATING`, `IS_GALLER
 (37, 'layer-7', 'images/layer-7.png', 65085, 0, 0, 0, '2018-02-06 00:07:02', 'admin'),
 (38, 'layer-8', 'images/layer-8.png', 63522, 0, 0, 0, '2018-02-06 00:07:07', 'admin'),
 (39, 'layer-9', 'images/layer-9.png', 68453, 0, 0, 0, '2018-02-06 00:07:13', 'admin'),
-(40, 'layer-30', 'images/layer-30.png', 577902, 0, 0, 0, '2018-02-24 23:19:25', 'admin');
+(40, 'layer-30', 'images/layer-30.png', 577902, 0, 0, 0, '2018-02-24 23:19:25', 'admin'),
+(41, 'kotik', 'images/kotik_1519670617.jpg', 142587, 1, 0, 1, '2018-02-26 23:06:44', ''),
+(42, 'kotik2', 'images/kotik2_1519847413.jpg', 12007, 0, 0, 1, '0000-00-00 00:00:00', ''),
+(43, 'kotik3', 'images/kotik3_1519853297.jpg', 23608, 0, 0, 1, '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -259,16 +280,44 @@ CREATE TABLE `ORDERS` (
   `payment_id` int(11) NOT NULL,
   `delivery_id` int(11) NOT NULL,
   `DATE` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `STATUS` varchar(255) DEFAULT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `sum_price` int(11) DEFAULT '0',
+  `status_id` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `ORDERS`
 --
 
-INSERT INTO `ORDERS` (`id`, `basket_id`, `payment_id`, `delivery_id`, `DATE`, `STATUS`, `user_id`) VALUES
-(1, 0, 1, 1, '2018-02-12 00:24:28', 'Оформлен', 0);
+INSERT INTO `ORDERS` (`id`, `basket_id`, `payment_id`, `delivery_id`, `DATE`, `user_id`, `sum_price`, `status_id`) VALUES
+(8, 834561, 1, 1, '2018-03-25 12:48:55', 3, 156, 1),
+(9, 540722, 1, 1, '2018-03-25 10:53:01', 3, 156, 0),
+(10, 673713, 1, 1, '2018-03-25 11:03:23', 3, 208, 0),
+(11, 114899, 1, 1, '2018-03-25 11:05:18', 4, 208, 0),
+(12, 624432, 1, 1, '2018-03-25 11:06:30', 4, 156, 0),
+(13, 703534, 1, 1, '2018-03-25 11:08:25', 4, 156, 0),
+(14, 997455, 1, 1, '2018-03-25 11:10:32', 4, 156, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `ORDER_STATUS`
+--
+
+CREATE TABLE `ORDER_STATUS` (
+  `id` int(11) NOT NULL,
+  `name` varchar(55) DEFAULT NULL,
+  `description` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `ORDER_STATUS`
+--
+
+INSERT INTO `ORDER_STATUS` (`id`, `name`, `description`) VALUES
+(1, 'Заказ принят', 'Заказ принят'),
+(2, 'Заказ оплачен', 'Заказ оплачен'),
+(3, 'Заказ отменен', 'Заказ отменен');
 
 -- --------------------------------------------------------
 
@@ -299,16 +348,17 @@ CREATE TABLE `Users` (
   `id_user` int(11) NOT NULL,
   `login` varchar(50) NOT NULL,
   `pass` varchar(500) NOT NULL,
-  `prim` varchar(500) NOT NULL
+  `role` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `Users`
 --
 
-INSERT INTO `Users` (`id_user`, `login`, `pass`, `prim`) VALUES
-(2, 'admin', '$2y$10$N9Sb5bvUPPkK7wxTi78Lp.qloB4l4eE26U.apxaTHRmS2WhlRdOCG', ''),
-(3, 'user', '$2y$10$mBPas3uNzVeY0AYq4MWu7es7BfLAmI6j4r8fjmkaNRGeupNax69ZO', '');
+INSERT INTO `Users` (`id_user`, `login`, `pass`, `role`) VALUES
+(2, 'admin', '$2y$10$N9Sb5bvUPPkK7wxTi78Lp.qloB4l4eE26U.apxaTHRmS2WhlRdOCG', 'admin'),
+(3, 'user', '$2y$10$mBPas3uNzVeY0AYq4MWu7es7BfLAmI6j4r8fjmkaNRGeupNax69ZO', 'user'),
+(4, 'newbie', '$2y$10$s4slOxsEH1/YBMRMaOPL0.umzEIiuRFvFhASewEVL3Fon0kcKLI3C', 'user');
 
 -- --------------------------------------------------------
 
@@ -329,21 +379,42 @@ CREATE TABLE `users_auth` (
 --
 
 INSERT INTO `users_auth` (`id_user`, `id_user_session`, `hash_cookie`, `date`, `prim`) VALUES
-(3, 97, '1518258496.6547283406082', '2018-02-10 13:28:16', '123456789'),
-(3, 102, '1518293327.4981161097059', '2018-02-10 23:08:47', '123456789'),
-(3, 103, '1518293914.8465518694099', '2018-02-10 23:18:34', '123456789'),
-(3, 105, '1518294353.0304442018643', '2018-02-10 23:25:53', '123456789'),
-(3, 106, '1518374413.31811305611618', '2018-02-11 21:40:13', '123456789'),
-(3, 107, '1518374432.50031117357105', '2018-02-11 21:40:32', '123456789'),
-(3, 108, '1518376194.72281185758521', '2018-02-11 22:09:54', '123456789'),
-(3, 109, '1518376212.5111995817068', '2018-02-11 22:10:12', '123456789'),
-(3, 111, '1518377656.669493992472', '2018-02-11 22:34:16', '123456789'),
-(3, 112, '1518377664.29781304888643', '2018-02-11 22:34:24', '123456789'),
-(3, 113, '1518377805.4358661521717', '2018-02-11 22:36:45', '123456789'),
-(3, 114, '1518377828.8487748961460', '2018-02-11 22:37:08', '123456789'),
-(3, 119, '1518382645.6264544359692', '2018-02-11 23:57:25', '123456789'),
-(3, 120, '1518384670.8335551268114', '2018-02-12 00:31:10', '123456789'),
-(3, 121, '1518384680.9499926130364', '2018-02-12 00:31:20', '123456789');
+(2, 7, '20089060498486', '2018-03-06 00:41:37', '123456789'),
+(2, 8, '66049564783478', '2018-03-18 18:56:42', '123456789'),
+(3, 10, '1.3402378365503E+14', '2018-03-18 19:15:09', '123456789'),
+(4, 12, '1.2921821077601E+14', '2018-03-18 20:52:43', '123456789'),
+(2, 14, '1.2157052204957E+14', '2018-03-24 20:59:57', '123456789'),
+(2, 16, '1.4057029581595E+14', '2018-03-24 21:35:02', '123456789'),
+(2, 17, '1.1584828597276E+14', '2018-03-24 21:35:26', '123456789'),
+(2, 18, '54318723106435', '2018-03-24 21:35:36', '123456789'),
+(2, 19, '46779151172968', '2018-03-24 21:37:00', '123456789'),
+(3, 23, '1.0664756203824E+14', '2018-03-25 00:41:45', '123456789'),
+(3, 24, '1.0165564054152E+14', '2018-03-25 00:42:06', '123456789'),
+(3, 26, '1.0569331739287E+14', '2018-03-25 00:42:43', '123456789'),
+(3, 29, '1.0934929693758E+14', '2018-03-25 01:54:24', '123456789'),
+(2, 33, '78096614437194', '2018-03-25 11:11:15', '123456789'),
+(2, 34, '1.356695314038E+14', '2018-03-25 11:12:33', '123456789'),
+(2, 35, '1.0617079889768E+14', '2018-03-25 11:13:28', '123456789'),
+(2, 36, '1.4379835731807E+14', '2018-03-25 11:13:57', '123456789'),
+(2, 37, '40691275464011', '2018-03-25 11:15:19', '123456789'),
+(2, 38, '1.3571977240875E+14', '2018-03-25 11:15:34', '123456789'),
+(2, 39, '92663362506342', '2018-03-25 11:15:46', '123456789'),
+(2, 40, '1.2704333443078E+14', '2018-03-25 12:13:12', '123456789'),
+(2, 41, '1.4321730191336E+14', '2018-03-25 12:13:22', '123456789'),
+(2, 42, '19910401253161', '2018-03-25 12:13:33', '123456789');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `VISITED_PAGES`
+--
+
+CREATE TABLE `VISITED_PAGES` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `DATE_CREATE` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Индексы сохранённых таблиц
@@ -398,6 +469,12 @@ ALTER TABLE `ORDERS`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `ORDER_STATUS`
+--
+ALTER TABLE `ORDER_STATUS`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `PAYMENT`
 --
 ALTER TABLE `PAYMENT`
@@ -417,6 +494,12 @@ ALTER TABLE `users_auth`
   ADD KEY `id_user` (`id_user`);
 
 --
+-- Индексы таблицы `VISITED_PAGES`
+--
+ALTER TABLE `VISITED_PAGES`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
@@ -424,7 +507,7 @@ ALTER TABLE `users_auth`
 -- AUTO_INCREMENT для таблицы `BASKET`
 --
 ALTER TABLE `BASKET`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT для таблицы `CALLBACK`
@@ -436,13 +519,13 @@ ALTER TABLE `CALLBACK`
 -- AUTO_INCREMENT для таблицы `CATEGORIES`
 --
 ALTER TABLE `CATEGORIES`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `CONTENT`
 --
 ALTER TABLE `CONTENT`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `DELIVERY`
@@ -454,19 +537,25 @@ ALTER TABLE `DELIVERY`
 -- AUTO_INCREMENT для таблицы `IMAGES`
 --
 ALTER TABLE `IMAGES`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT для таблицы `ITEMS`
 --
 ALTER TABLE `ITEMS`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `ORDERS`
 --
 ALTER TABLE `ORDERS`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT для таблицы `ORDER_STATUS`
+--
+ALTER TABLE `ORDER_STATUS`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `PAYMENT`
@@ -478,13 +567,13 @@ ALTER TABLE `PAYMENT`
 -- AUTO_INCREMENT для таблицы `Users`
 --
 ALTER TABLE `Users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `users_auth`
 --
 ALTER TABLE `users_auth`
-  MODIFY `id_user_session` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id_user_session` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -14,12 +14,13 @@ use components\Model;
 
 class Basket extends Model
 {
+    public $table = 'BASKET';
     public $id = null;
     public $basket_id = null;
     public $user_id = null;
     public $date = null;
     public $totalPrice = 0;
-    public $count = null;
+    public $count = 0;
     public $arItems = [];
     public $arItemsId = [];
 
@@ -28,9 +29,15 @@ class Basket extends Model
         $item = new Item($item_id);
         $this->totalPrice += $item->getPrice();
         $this->count += $quantity;
-        $this->arItemsId = $_SESSION['BASKET'];
-        $key = array_search($item_id, array_column($this->arItemsId, 'item_id'));
-        if ($key) {
+        $this->arItemsId = !empty($_SESSION['BASKET']) ? $_SESSION['BASKET'] : [];
+        $key = null;
+        foreach ($this->arItemsId as $ikey => $ivalue) {
+            if ($ivalue['item_id'] == $item_id) {
+                $key = $ikey;
+                break;
+            }
+        }
+        if ($key !== null) {
             $this->arItemsId[$key]['QUANTITY'] += $quantity;
             if (!empty($this->arItems))
                 $this->arItems[$key]['QUANTITY'] += $quantity;
@@ -42,11 +49,11 @@ class Basket extends Model
             $this->arItems[] = ['ITEM' => $item, 'QUANTITY' => $quantity];
             $this->arItemsId[] = ['item_id' => $item_id, 'QUANTITY' => $quantity];
         }
-        if (Auth::check()) {
-
-        } else {
-            $_SESSION['BASKET'] = $this->arItemsId;
-        }
+//        if (Auth::check()) {
+//
+//        } else {
+//            $_SESSION['BASKET'] = $this->arItemsId;
+//        }
         $_SESSION['BASKET'] = $this->arItemsId;
 
 //        try {
@@ -63,7 +70,14 @@ class Basket extends Model
         $result = true;
         $errorMessage = '';
         $this->arItemsId = $_SESSION['BASKET'];
-        $key = array_search($item_id, array_column($this->arItemsId, 'item_id'));
+//        $key = array_search($item_id, array_column($this->arItemsId, 'item_id'));
+        $key = null;
+        foreach ($this->arItemsId as $ikey => $ivalue) {
+            if ($ivalue['item_id'] == $item_id) {
+                $key = $ikey;
+                break;
+            }
+        }
         if ($key !== null) {
             if ($quantity > 0) {
                 $this->arItemsId[$key]['QUANTITY'] = $quantity;
@@ -88,32 +102,40 @@ class Basket extends Model
 
     public function getBasket()
     {
-        if (Auth::check()) {
-
-        }
+//        if (Auth::check()) {
+//
+//        }
         $result = true;
         $errorMessage = '';
-        try {
-            $this->arItemsId = $_SESSION['BASKET'];
-        } catch (Exception $e) {
+        if (!empty($_SESSION['BASKET'])) {
+            try {
+                $this->arItemsId = $_SESSION['BASKET'];
+            } catch (Exception $e) {
+                $result = false;
+                $errorMessage = $e;
+            }
+        } else {
             $result = false;
-            $errorMessage = $e;
+            $errorMessage = 'Корзина пуста';
         }
-
         return $this->sendBasket($result, $errorMessage);
     }
 
     public function sendBasket($result = true, $errorMessage = '')
     {
         $arResult = [];
-        if ($result) {
+        if ($result && !empty($this->arItemsId)) {
             foreach ($this->arItemsId as $key => $value) {
                 if (!empty($this->arItems[$key]))
                     $item = $this->arItems[$key];
                 else {
-                    $item['ITEM'] = new Item($value['item_id']);
-                    $item['QUANTITY'] = $value["QUANTITY"];
-                    $this->arItems[$key][''] = $item;
+                    if (empty($value['item_id'])) {
+                        unset($this->arItemsId[$key]);
+                    } else {
+                        $item['ITEM'] = new Item($value['item_id']);
+                        $item['QUANTITY'] = $value["QUANTITY"];
+                        $this->arItems[$key][] = $item;
+                    }
                 }
                 $basketItem["id"] = $item['ITEM']->getId();
                 $basketItem["quantity"] = $value["QUANTITY"];
@@ -132,5 +154,78 @@ class Basket extends Model
         }
 
         return $arResult;
+    }
+
+    /**
+     * @return null
+     */
+    public function getBasketId()
+    {
+        if ($this->basket_id == null) {
+            $this->basket_id = rand(100000, 999999);
+            $basket = $this->getBasketById($this->basket_id);
+            if ($basket) {
+                $this->getBasketId();
+            }
+
+        }
+        return $this->basket_id;
+    }
+
+    public function getBasketById($basket_id)
+    {
+        $this->basket_id = $basket_id;
+        $arBasket = $this->get([], ['basket_id' => $basket_id]);
+        $this->basket_id = $basket_id;
+        foreach ($arBasket as $key => $value) {
+
+            if (!$this->user_id) {
+                $this->user_id = $value['user_id'];
+            }
+
+            if (!$this->date) {
+                $this->date = $value['DATE'];
+            }
+
+            $item['ITEM'] = new Item($value['item_id']);
+            $item['QUANTITY'] = $value["QUANTITY"];
+            $this->arItems[$key][] = $item;
+
+            $itemId['item_id'] = $value['user_id'];
+            $itemId['QUANTITY'] = $value["QUANTITY"];
+            $this->arItemsId[] = $itemId;
+
+            $this->count += $value["QUANTITY"];
+            $this->totalPrice += $item['ITEM']->getPrice() * $value["QUANTITY"];
+        }
+        return $this;
+    }
+
+    public function freezeBasket()
+    {
+        $arItemsId = $this->prepareBasket();
+        if (!empty($arItemsId)) {
+            foreach ($arItemsId as $key => $value) {
+
+                $item['item_id'] = $value['item_id'];
+                $item['quantity'] = $value['QUANTITY'];
+                $item['user_id'] = Auth::getUserId();
+                $item['basket_id'] = $this->getBasketId();
+
+                $this->add($item);
+
+                $this->count += $value["QUANTITY"];
+                $pitem = new Item($value['item_id']);
+                $this->totalPrice += $pitem->getPrice() * $value["QUANTITY"];
+            }
+        }
+        unset($_SESSION['BASKET']);
+        return $this->getBasketId();
+    }
+
+    protected function prepareBasket()
+    {
+        $this->getBasket();
+        return $this->arItemsId;
     }
 }

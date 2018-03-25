@@ -21,14 +21,14 @@ class Request
 
     public function init() {
 
-        $url =  $_SERVER['REQUEST_URI'];
+        $url =  !empty($_REQUEST['path']) ? $_REQUEST['path'] : '';
         $path = explode('/',$url);
 
-        if( count($path) >= 3 ) {
-            $this->controller = $path[1];
-            $this->action = $path[2];
-        } elseif ( count($path) == 2 && !empty ( $path[1])) {
-            $this->controller = $path[1];
+        if( count($path) >= 2 ) {
+            $this->controller = $path[0];
+            $this->action = $path[1] ? $path[1] : $this->action;
+        } elseif ( count($path) == 1 && !empty ( $path[0])) {
+            $this->controller = $path[0];
         }
 
         $classController = $this->controllerNamespace . '\\' . ucfirst($this->controller) . 'Controller';

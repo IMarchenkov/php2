@@ -20,7 +20,7 @@
                         {%set n=n+1%}
                         <i class="fa fa-star-half-o"></i>
                     {%endif%}
-                    {% if n < 5%}
+                    {%if n < 5%}
                         {% for i in n..5 %}
                             <i class="fa fa-star-o"></i>
                         {%endfor%}
@@ -34,7 +34,29 @@
                     <span> Add to Cart </span>
                 </div>
             </a>
+            {% if admin == true %}
+            <button id="{{item.id}}" class="delete_item">Удалить</button>
+            {%endif%}
         </div>
         {%endfor%}
     </div>
+    {% if admin == true %}
+        <div id="catalog_admin">
+            <style>
+                #add_item{
+                    display: flex;
+                    flex-flow: column nowrap;
+                    width: 400px;
+                }
+            </style>
+            <h2>Управление каталогом</h2>
+            <form id="add_item" action="#">
+                <input type="text" id="item_name" name="name" placeholder="Название товара">
+                <input type="text" id="item_code" name="code" placeholder="Код товара">
+                <input type="text" id="item_price" name="price" placeholder="Цена товара">
+                <input type="number" id="item_image" name="image" placeholder="Индификатор изображения из галлереи">
+                <button type="submit">Добавить</button>
+            </form>
+        </div>
+    {%endif%}
 </div>

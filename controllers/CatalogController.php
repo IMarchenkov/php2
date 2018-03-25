@@ -14,9 +14,11 @@ class CatalogController extends Controller
 //            var_dump("Приветствую, хозяин!");
         }
 
-        $catalogyModel = new Catalog();
+        $catalogModel = new Catalog();
 
-        $params = $catalogyModel->getCatalog();
+        $params = $catalogModel->getCatalog();
+
+        $params['admin'] = Auth::isAdmin();
 
         $this->render ('catalog.html', $params);
 
@@ -30,7 +32,8 @@ class CatalogController extends Controller
 
         $catalogModel = new Catalog();
 
-        $params = $catalogModel->getDetailItem($path[3]);
+        $params = $catalogModel->getDetailItem($path[2]);
+
 
         $this->render ('detail.html', $params);
     }
