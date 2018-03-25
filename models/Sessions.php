@@ -18,7 +18,7 @@ class Sessions extends Model
 
     public function addUserSession($id_user, $isRemember)
     {
-        $idUserCookie = microtime(true)*rand(10000, 100000);
+        $idUserCookie = (int)explode('.', microtime(true)/10000 + rand(100, 999))[0]* rand(100, 999) ;
         $_SESSION['id_user'] = $id_user;
         $_SESSION['IdUserSession'] = $idUserCookie;
         $arParams = array("id_user" => $id_user, "hash_cookie" => $idUserCookie, "prim" => '123456789');

@@ -83,8 +83,8 @@
 
                         </fieldset>
                         <fieldset>
-                            <input type="submit" name="SubmitLogin" value="Sign in"/>
-                            <a href="/account/newuser/">Sign up</a>
+                            <input type="submit" name="SubmitLogin" value="Войти"/>
+                            <a href="/account/newuser/">Регистрация</a>
                         </fieldset>
 
                     </form>
